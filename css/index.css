@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "xiao";
+  src: url("../font/LiuJinSuiYueBiAnYouGuang-2.ttf") format("truetype");
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+video {
+  margin: 0;
+  padding: 0;
+}
+
+.cenver {
+  width: 600px;
+  height: 600px;
+  background-color: #ffffff54;
+  border-radius: 20px;
+  overflow: hidden; /* 确保内容不超出边界 */
+}
+
+.title {
+  margin: 15px;
+  text-align: center;
+  font-size: 35px;
+  letter-spacing: 10px;
+  font-family: "xiao";
+}
+
+hr {
+  border: 0;
+  height: 3px;
+  background: #ffffff80;
+}
+
+.text {
+  padding: 10px;
+  line-height: 1.6;
+  font-size: 25px;
+  font-family: "xiao";
+  height: calc(100% - 80px);
+  overflow: auto;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+video {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1; /* 确保视频在其他内容后面 */
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>望舒来信</title>
+    <style>
+      body {
+        transition: background-image 0.5s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="myVideo" autoplay muted playsinline>
+      <source src="./video/SnapAny.mp4" type="video/mp4" />
+    </video>
+    <div class="cenver">
+      <div class="title">望舒来信</div>
+      <hr />
+      <div class="text">
+        <p id="content"></p>
+      </div>
+    </div>
+    <audio id="audio" src="./video/SnapAny.mp3"></audio>
+    <script>
+      const content = [
+        "鸑鷟：",
+        "时至望安，见字如晤",
+        "一别经久，殊不知璃月已至初冬，天气渐凉，按璃月人所说：应增衣添裳，注意防寒保暖，勿感风寒",
+        "不必忧心于我，我为仙躯，人间的严寒于我无碍，但你旅途多奔波四处，若不照顾好自己，我也难及时伸以援手",
+        "前些时日去往沉玉谷一带，此间灵力充沛纯净，我因业障并未多停留，但你若愿意，可来此一聚，顺便交予一些山林间的药草，对你的旅途应多有益处",
+        "海灯节在即，不知你对这璃月烟火是否有兴致，我虽不太能够理解人类的感情，但你若有意，我愿陪你一同前往",
+        "如遇困难，便直呼我名，三眼五显仙人魈，即刻前来听召",
+      ];
+
+      const contentElement = document.getElementById("content");
+      const audioElement = document.getElementById("audio");
+      const videoElement = document.getElementById("myVideo");
+
+      let currentTextIndex = 0;
+      let currentCharIndex = 0;
+
+      function type() {
+        if (currentTextIndex < content.length) {
+          const currentText = content[currentTextIndex];
+          if (currentCharIndex < currentText.length) {
+            contentElement.innerHTML += currentText.charAt(currentCharIndex);
+            currentCharIndex++;
+            setTimeout(type, 170);
+          } else {
+            currentTextIndex++;
+            currentCharIndex = 0;
+            contentElement.innerHTML += "<br>";
+            setTimeout(type, 500);
+          }
+        } else {
+          videoElement.style.display = "block";
+          audioElement.play();
+          videoElement.play();
+        }
+      }
+
+      videoElement.addEventListener("ended", function () {
+        videoElement.style.display = "none";
+      });
+
+      type();
+    </script>
+  </body>
+</html>
